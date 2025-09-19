@@ -1,0 +1,10 @@
+const request = require('supertest');
+const app = require('../src/server');
+
+describe('Testes da API de livros', () => {
+  it('Deve retornar lista de livros com status 200', async () => {
+    const res = await request(app).get('/livros');
+    expect(res.statusCode).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+  });
+});
